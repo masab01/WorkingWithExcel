@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Taskk.Models.ClientViewModel>
+
+<div class="container">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Фамилия Имя</th>
+                <th>Адрес</th>
+                <th>Дата рождения</th>
+                <th>Номер</th>
+                <th>ИНН</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+
+                {
+                    <tr style="background-color:#00ffff">
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Address</td>
+                        <td>@item.BirthDate</td>
+                        <td>@item.PhoneNumber</td>
+                        <td>@item.SocialNumber</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+
+        <form action="@Url.Action("SelectedClient", "Home")" method="get">
+            <p>
+                Search: <input type="text" name="socialId" value="">
+                <input type="submit" value="Искать" />
+            </p>
+        </form>
+    </div>
+</div>

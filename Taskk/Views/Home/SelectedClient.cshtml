@@ -1,0 +1,42 @@
+﻿@model Taskk.Models.ClientViewModel
+
+<div class="container">
+   
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Фамилия Имя</th>
+                <th>Адрес</th>
+                <th>Дата Рождения</th>
+                <th>Номер</th>
+                <th>ИНН</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+
+                <tr style="background-color:#00ffff">
+                    <td>@Model.Id</td>
+                    <td>@Model.Name</td>
+                    <td>@Model.Address</td>
+                    <td>@Model.BirthDate</td>
+                    <td>@Model.PhoneNumber</td>
+                    <td>@Model.SocialNumber</td>
+                </tr>
+
+            }
+            else
+            {
+                <h3>@ViewBag.ErrorMessage</h3>
+            }
+        </tbody>
+    </table>
+    <form action="@Url.Action("exporttoexcel", "home")" method="get">
+        <p>
+            <button class="btn-primary" type="submit" name="socialId" value="@Model.SocialNumber">Сохранить</button>
+        </p>
+    </form>
+
+</div>
